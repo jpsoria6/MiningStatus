@@ -11,7 +11,7 @@ class NavBar extends React.Component {
         return (  
             <Nav className="justify-content-center mb-5 bg-primary" >
             <Nav.Item>
-              <Nav.Link style={styles}>Miners</Nav.Link>
+              <Nav.Link style={styles}>Mineros</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link style={styles} >Pagos</Nav.Link>
