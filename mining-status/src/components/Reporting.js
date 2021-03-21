@@ -1,7 +1,7 @@
 import React from "react";
 import Chart from "chart.js";
 import { csv } from "d3";
-import data from "../csv/mineros.csv";
+import data from "../csv/resumenMineros.csv";
 import { Dropdown, Container, Row, Col } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
@@ -30,6 +30,8 @@ class Reporting extends React.Component {
     let hashrate = [];
 
     if (data === null || data === undefined) return;
+
+    console.log(data)
 
     data = data.filter((element) => element.miner === miner);
     if (date) {
@@ -60,7 +62,7 @@ class Reporting extends React.Component {
     let stringFecha =
       this.getDay(fecha.getDate()) +
       "/" +
-      (fecha.getMonth() + 1) +
+      this.getMonth(fecha.getMonth() + 1) +
       "/" +
       fecha.getFullYear();
     if (stringFecha === "31/12/1969") stringFecha = "";
@@ -77,6 +79,13 @@ class Reporting extends React.Component {
       return "0" + day;
     }
     return day + "";
+  };
+
+  getMonth = (month) => {
+    if (month < 10) {
+      return "0" + month;
+    }
+    return month + "";
   };
 
   componentDidMount() {
@@ -120,12 +129,19 @@ class Reporting extends React.Component {
                   {this.state.minerName}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item onSelect={this.getData} eventKey="coquito">
-                    Coquito Miner
+                  <Dropdown.Item onSelect={this.getData} eventKey="Agucho Miner">
+                  Agucho Miner
                   </Dropdown.Item>
-                  <Dropdown.Item onSelect={this.getData} eventKey="phelps">
-                    Phelps Miner
+                  <Dropdown.Item onSelect={this.getData} eventKey="Ayrton Miner">
+                  Ayrton Miner
                   </Dropdown.Item>
+                  <Dropdown.Item onSelect={this.getData} eventKey="Bebecito Miner">
+                  Bebecito Miner
+                  </Dropdown.Item>
+                  <Dropdown.Item onSelect={this.getData} eventKey="Phelps Miner">
+                  Phelps Miner
+                  </Dropdown.Item>
+
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
