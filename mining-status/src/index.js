@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Reporting from './components/Reporting'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar';
 
 
 ReactDOM.render(
   <React.StrictMode>
+    <NavBar></NavBar>
     <Reporting></Reporting>
   </React.StrictMode>,
   document.getElementById('root')
