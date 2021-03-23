@@ -1,24 +1,27 @@
-import React from 'react'
-import {Nav} from 'react-bootstrap'
+import React from "react";
+import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class NavBar extends React.Component {
-  
-
-    render() { 
-        const styles = {
-            color : '#FFFFFF'
-        }
-        return (  
-            <Nav className="justify-content-center mb-5 bg-primary" >
-            <Nav.Item>
-              <Nav.Link style={styles}>Mineros</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link style={styles} >Pagos</Nav.Link>
-            </Nav.Item>
-          </Nav>  
-        );
-    }
+  render() {
+    const styles = {
+      color: "#FFFFFF",
+    };
+    return (
+      <Nav className="justify-content-center mb-5 bg-primary">
+        <Nav.Item className="m-2">
+          <Link to="/mineros"  style={styles}>
+            Mineros
+          </Link>
+        </Nav.Item>
+        <Nav.Item className="m-2">
+          <Link to="/pagos" style={styles}>
+            Pagos
+          </Link>
+        </Nav.Item>
+      </Nav>
+    );
+  }
 }
- 
+
 export default NavBar;

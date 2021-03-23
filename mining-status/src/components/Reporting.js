@@ -156,7 +156,9 @@ class Reporting extends React.Component {
             </Col>
           </Row>
         </Container>
-        <canvas ref={this.grafica} width="800px" height="400px"></canvas>
+        <Container>
+          <canvas ref={this.grafica} width="800px" height="400px"></canvas>
+        </Container>
       </div>
     );
   }

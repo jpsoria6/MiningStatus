@@ -5,12 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import Reporting from './components/Reporting'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
-
+import {BrowserRouter,Route} from 'react-router-dom'
+import Payments from './components/Payments';
 
 ReactDOM.render(
   <React.StrictMode>
-    <NavBar></NavBar>
-    <Reporting></Reporting>
+    <BrowserRouter>
+    <Route path='/' component = {NavBar}/>
+    <Route path='/mineros' component = {Reporting}/>
+    <Route path='/pagos' component = {Payments}/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
