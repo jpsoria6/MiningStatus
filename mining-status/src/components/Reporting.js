@@ -31,7 +31,7 @@ class Reporting extends React.Component {
 
     if (data === null || data === undefined) return;
 
-    console.log(data)
+    console.log(data);
 
     data = data.filter((element) => element.miner === miner);
     if (date) {
@@ -98,7 +98,7 @@ class Reporting extends React.Component {
       data: {
         datasets: [
           {
-             backgroundColor: "rgba(0,0,0,0)",
+            backgroundColor: "rgba(0,0,0,0)",
             borderColor: "rgb(12, 183, 246)",
           },
         ],
@@ -129,19 +129,57 @@ class Reporting extends React.Component {
                   {this.state.minerName}
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item onSelect={this.getData} eventKey="Agucho Miner">
-                  Agucho Miner
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Agucho Miner"
+                  >
+                    Agucho Miner
                   </Dropdown.Item>
-                  <Dropdown.Item onSelect={this.getData} eventKey="Ayrton Miner">
-                  Ayrton Miner
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Ayrton Miner"
+                  >
+                    Ayrton Miner
                   </Dropdown.Item>
-                  <Dropdown.Item onSelect={this.getData} eventKey="Bebecito Miner">
-                  Bebecito Miner
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Bebecito Miner"
+                  >
+                    Bebecito Miner
                   </Dropdown.Item>
-                  <Dropdown.Item onSelect={this.getData} eventKey="Phelps Miner">
-                  Phelps Miner
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Coquito Miner"
+                  >
+                    Coquito Miner
                   </Dropdown.Item>
-
+                  <Dropdown.Item onSelect={this.getData} eventKey="Fox Miner">
+                    Fox Miner
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Janisse Miner"
+                  >
+                    Janisse Miner
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Moonship Miner"
+                  >
+                    Moonship Miner
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Phelps Miner"
+                  >
+                    Phelps Miner
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={this.getData}
+                    eventKey="Virgin Miner"
+                  >
+                    Virgin Miner
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Col>
