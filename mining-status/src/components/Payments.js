@@ -95,10 +95,18 @@ class Payments extends React.Component {
     let count = 0
      data = data.filter(element => element.miner === miner)
     data.forEach(element => {
-      if(element.hashrate !== "" && element.hashrate !== "0.0"){
-        totalMhs += parseFloat(element.hashrate)
-        count++
+      let hash = parseFloat(element.hashrate)
+      if( isNaN(hash)){
+        hash = 0
       }
+      totalMhs += hash
+      count++
+      //if(element.hashrate !== "" && element.hashrate !== "0.0"){
+      //  totalMhs += parseFloat(element.hashrate)
+      //  count++
+      //}else{
+      //  count ++
+      //}
     });
     let avg = totalMhs/count
     if(isNaN(avg)) avg=0
