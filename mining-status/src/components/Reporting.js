@@ -12,20 +12,22 @@ class Reporting extends React.Component {
     super();
     this.state = {
       minerName: "Seleccione un Minero",
-      date: null,
-      dateString: "",
+      dateInitial: null,
+      dateFinish: null,
+      dateStringInicio: "",
+      dateStringFinal: ""
     };
     this.grafica = React.createRef();
     this.chart = null;
   }
 
-  getData = (miner, event, date = null) => {
+  getData = (miner, event, dateInitial = null, dateFinish = null) => {
     csv(data, (data) => {
-      this.presentData(data, miner, date);
+      this.presentData(data, miner, dateInitial, dateFinish);
     });
   };
 
-  presentData = (data, miner, date = null) => {
+  presentData = (data, miner, dateInitial = null, dateFinish = null) => {
     let hora = [];
     let hashrate = [];
 
@@ -34,9 +36,9 @@ class Reporting extends React.Component {
     console.log(data);
 
     data = data.filter((element) => element.miner === miner);
-    if (date) {
+    if (dateInitial && dateFinish) {
       data = data.filter(
-        (element) => element.miner === miner && element.dia === date
+        (element) => element.miner === miner && element.dia >= dateInitial && element.dia <= dateFinish
       );
     }
 
@@ -57,21 +59,38 @@ class Reporting extends React.Component {
     this.chart.update();
   };
 
-  updateDate = (date) => {
+  updateDateIni = (date) => {
     let fecha = new Date(date);
-    let stringFecha =
+    let stringFechaInicio =
       this.getDay(fecha.getDate()) +
       "/" +
       this.getMonth(fecha.getMonth() + 1) +
       "/" +
       fecha.getFullYear();
-    if (stringFecha === "31/12/1969") stringFecha = "";
+    if (stringFechaInicio === "31/12/1969") stringFechaInicio = "";
     this.setState({
       ...this.state,
-      date: date,
-      dateString: stringFecha,
+      dateInitial: date,
+      dateStringInicio: stringFechaInicio,
     });
-    this.getData(this.state.minerName, null, stringFecha);
+    this.getData(this.state.minerName, null, stringFechaInicio, this.state.dateStringFinal);
+  };
+
+  updateDateFin = (date) => {
+    let fecha = new Date(date);
+    let stringFechaFin =
+      this.getDay(fecha.getDate()) +
+      "/" +
+      this.getMonth(fecha.getMonth() + 1) +
+      "/" +
+      fecha.getFullYear();
+    if (stringFechaFin === "31/12/1969") stringFechaFin = "";
+    this.setState({
+      ...this.state,
+      dateFinish: date,
+      dateStringFinal: stringFechaFin,
+    });
+    this.getData(this.state.minerName, null, this.state.dateStringInicio , stringFechaFin);
   };
 
   getDay = (day) => {
@@ -186,10 +205,17 @@ class Reporting extends React.Component {
             <Col className="mb-3">
               <DatePicker
                 dateFormat="dd/MM/yyyy"
-                selected={this.state.date}
-                onChange={this.updateDate}
+                selected={this.state.dateInitial}
+                onChange={this.updateDateIni}
                 isClearable
-                placeholderText="Seleccione una fecha"
+                placeholderText="Desde"
+              />
+              <DatePicker
+                dateFormat="dd/MM/yyyy"
+                selected={this.state.dateFinish}
+                onChange={this.updateDateFin}
+                isClearable
+                placeholderText="Hasta"
               />
             </Col>
           </Row>
